@@ -11,7 +11,7 @@ import (
 )
 
 // helper function output struct
-type Output struct {
+type Input struct {
 	character, password string
 	min, max int
 }
@@ -32,12 +32,12 @@ func main() {
 }
 
 // formats inputs so they can be easily solved
-func helperFunc(input []string) []*Output {
-	var formattedInputs []*Output
+func helperFunc(input []string) []*Input {
+	var formattedInputs []*Input
 	for _, inputString := range input {
 		var min string
 		var max string
-		output := new(Output)
+		output := new(Input)
 
 		for i := 0; i < len(inputString); i++ {
 			char := string(inputString[i])
@@ -69,15 +69,10 @@ func helperFunc(input []string) []*Output {
 	return formattedInputs
 }
 
-func part1(inputs []*Output) int {
+func part1(inputs []*Input) int {
 	valid := 0
 	for _, input := range inputs {
-		characters := 0
-		for _, character := range input.password {
-			if string(character) == input.character {
-				characters++
-			}
-		}
+		characters := strings.Count(input.password, input.character)
 		if characters >= input.min && characters <= input.max {
 			valid++
 		}
@@ -85,12 +80,14 @@ func part1(inputs []*Output) int {
 	return valid
 }
 
-func part2(inputs []*Output) int {
+func part2(inputs []*Input) int {
 	valid := 0
 	for _, input := range inputs {
 		index1char := string(input.password[input.min-1])
 		index2char := string(input.password[input.max-1])
-		if !(input.character == index1char && input.character == index2char) && (input.character == index1char || input.character == index2char) {
+		notBoth := !(input.character == index1char && input.character == index2char)
+		oneOrOther := input.character == index1char || input.character == index2char
+		if notBoth && oneOrOther {
 			valid++
 		}
 	}
