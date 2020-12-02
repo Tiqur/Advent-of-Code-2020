@@ -10,82 +10,11 @@ import (
 	"strings"
 )
 
-func part1(input []string ) int {
-	valid := 0
-	for _, inputString := range input {
-		var character string
-		var min string
-		var max string
-		charAmount := 0
-
-		for i := 0; i < len(inputString); i++ {
-			char := string(inputString[i])
-			hyphenIndex := strings.Index(inputString, "-")
-			colonIndex := strings.Index(inputString, ":")
-
-			if i < hyphenIndex { // before the hyphen ( min )
-				min += char
-			} else if i < colonIndex - 2 && i > hyphenIndex { // before the colon ( max )
-				max += char
-			} else if i == colonIndex - 1 {
-				character = char
-			} else if i > colonIndex + 1 { // after the final space ( actual input )
-				if char == character {
-					charAmount++
-				}
-			}
-		}
-
-		minInt, _ := strconv.Atoi(min)
-		maxInt, _ := strconv.Atoi(max)
-
-		if charAmount >= minInt && charAmount <= maxInt {
-			valid ++
-		}
-
-	}
-
-	return valid
+// helper function output struct
+type Output struct {
+	character, password string
+	min, max int
 }
-
-func part2(input []string ) int {
-	valid := 0
-	for _, inputString := range input {
-		var character string
-		var index1 string
-		var index2 string
-		var prefixLength int
-
-		for i := 0; i < len(inputString); i++ {
-			char := string(inputString[i])
-			hyphenIndex := strings.Index(inputString, "-")
-			colonIndex := strings.Index(inputString, ":")
-
-			if i < hyphenIndex { // before the hyphen ( min )
-				index1 += char
-			} else if i < colonIndex - 2 && i > hyphenIndex { // before the colon ( max )
-				index2 += char
-			} else if i == colonIndex - 1 {
-				character = char
-				prefixLength = colonIndex + 1
-			}
-
-		}
-
-		index1int, _ := strconv.Atoi(index1)
-		index2int, _ := strconv.Atoi(index2)
-		index1char := string(inputString[index1int+prefixLength])
-		index2char := string(inputString[index2int+prefixLength])
-		if !(character == index1char && character == index2char) && (character == index1char || character == index2char) {
-			valid ++
-		}
-
-	}
-
-
-	return valid
-}
-
 
 func main() {
 	var inputs []string
@@ -97,7 +26,73 @@ func main() {
 		inputs = append(inputs, scanner.Text())
 	}
 
+	formattedInputs := helperFunc(inputs)
+	fmt.Println("Part 1:", part1(formattedInputs))
+	fmt.Println("Part 2:", part2(formattedInputs))
+}
 
-	fmt.Println("Part 1:", part1(inputs))
-	fmt.Println("Part 2:", part2(inputs))
+func part2(inputs []*Output) int {
+	valid := 0
+	for _, input := range inputs {
+		index1char := string(input.password[input.min-1])
+		index2char := string(input.password[input.max-1])
+		if !(input.character == index1char && input.character == index2char) && (input.character == index1char || input.character == index2char) {
+			valid++
+		}
+	}
+	return valid
+}
+
+// formats inputs so they can be easily solved
+func helperFunc(input []string) []*Output {
+	var formattedInputs []*Output
+	for _, inputString := range input {
+		var min string
+		var max string
+		output := new(Output)
+
+		for i := 0; i < len(inputString); i++ {
+			char := string(inputString[i])
+			hyphenIndex := strings.Index(inputString, "-")
+			colonIndex := strings.Index(inputString, ":")
+
+			switch {
+			// get min num
+			case i < hyphenIndex:
+				min += char
+			// get max num
+			case i < colonIndex - 2 && i > hyphenIndex:
+				max += char
+			// get character to test
+			case i == colonIndex - 1:
+				output.character = char
+			// get password / string
+			case i > colonIndex + 1:
+				output.password += char
+			}
+		}
+
+		minInt, _ := strconv.Atoi(min)
+		maxInt, _ := strconv.Atoi(max)
+		output.min = minInt
+		output.max = maxInt
+		formattedInputs = append(formattedInputs, output)
+	}
+	return formattedInputs
+}
+
+func part1(inputs []*Output) int {
+	valid := 0
+	for _, input := range inputs {
+		characters := 0
+		for _, character := range input.password {
+			if string(character) == input.character {
+				characters++
+			}
+		}
+		if characters >= input.min && characters <= input.max {
+			valid++
+		}
+	}
+	return valid
 }
