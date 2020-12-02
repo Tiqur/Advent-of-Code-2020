@@ -31,18 +31,6 @@ func main() {
 	fmt.Println("Part 2:", part2(formattedInputs))
 }
 
-func part2(inputs []*Output) int {
-	valid := 0
-	for _, input := range inputs {
-		index1char := string(input.password[input.min-1])
-		index2char := string(input.password[input.max-1])
-		if !(input.character == index1char && input.character == index2char) && (input.character == index1char || input.character == index2char) {
-			valid++
-		}
-	}
-	return valid
-}
-
 // formats inputs so they can be easily solved
 func helperFunc(input []string) []*Output {
 	var formattedInputs []*Output
@@ -91,6 +79,18 @@ func part1(inputs []*Output) int {
 			}
 		}
 		if characters >= input.min && characters <= input.max {
+			valid++
+		}
+	}
+	return valid
+}
+
+func part2(inputs []*Output) int {
+	valid := 0
+	for _, input := range inputs {
+		index1char := string(input.password[input.min-1])
+		index2char := string(input.password[input.max-1])
+		if !(input.character == index1char && input.character == index2char) && (input.character == index1char || input.character == index2char) {
 			valid++
 		}
 	}
