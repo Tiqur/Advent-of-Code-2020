@@ -31,39 +31,25 @@ func main() {
 	fmt.Println("Part 2:", part2(formattedInputs))
 }
 
+
 // formats inputs so they can be easily solved
 func helperFunc(input []string) []*Input {
 	var formattedInputs []*Input
 	for _, inputString := range input {
-		var min string
-		var max string
 		output := new(Input)
 
-		for i := 0; i < len(inputString); i++ {
-			char := string(inputString[i])
-			hyphenIndex := strings.Index(inputString, "-")
-			colonIndex := strings.Index(inputString, ":")
-
-			switch {
-			// get min num
-			case i < hyphenIndex:
-				min += char
-			// get max num
-			case i < colonIndex - 2 && i > hyphenIndex:
-				max += char
-			// get character to test
-			case i == colonIndex - 1:
-				output.character = char
-			// get password / string
-			case i > colonIndex + 1:
-				output.password += char
-			}
-		}
-
-		minInt, _ := strconv.Atoi(min)
-		maxInt, _ := strconv.Atoi(max)
+		// int 1 and 2
+		minInt, _ := strconv.Atoi(strings.Split(inputString, "-")[0])
+		maxInt, _ := strconv.Atoi(strings.Split(strings.Split(inputString, "-")[1], " ")[0])
 		output.min = minInt
 		output.max = maxInt
+
+		// character
+		output.character = string(inputString[strings.Index(inputString, ":")-1])
+
+		// password
+		output.password = strings.Split(inputString, " ")[2]
+
 		formattedInputs = append(formattedInputs, output)
 	}
 	return formattedInputs
