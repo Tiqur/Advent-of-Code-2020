@@ -1,0 +1,13 @@
+D:\Development\AdventOfCode2020\Day 4 - C#\bin\Debug\netcoreapp3.1\Day 4 - C#.exe
+D:\Development\AdventOfCode2020\Day 4 - C#\bin\Debug\netcoreapp3.1\Day 4 - C#.deps.json
+D:\Development\AdventOfCode2020\Day 4 - C#\bin\Debug\netcoreapp3.1\Day 4 - C#.runtimeconfig.json
+D:\Development\AdventOfCode2020\Day 4 - C#\bin\Debug\netcoreapp3.1\Day 4 - C#.runtimeconfig.dev.json
+D:\Development\AdventOfCode2020\Day 4 - C#\bin\Debug\netcoreapp3.1\Day 4 - C#.dll
+D:\Development\AdventOfCode2020\Day 4 - C#\bin\Debug\netcoreapp3.1\Day 4 - C#.pdb
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.csprojAssemblyReference.cache
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.AssemblyInfoInputs.cache
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.AssemblyInfo.cs
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.csproj.CoreCompileInputs.cache
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.dll
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.pdb
+D:\Development\AdventOfCode2020\Day 4 - C#\obj\Debug\netcoreapp3.1\Day 4 - C#.genruntimeconfig.cache

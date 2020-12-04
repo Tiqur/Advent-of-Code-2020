@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Development\\AdventOfCode2020\\Day 4 - C#\\Day 4 - C#.csproj": {}
+  },
+  "projects": {
+    "D:\\Development\\AdventOfCode2020\\Day 4 - C#\\Day 4 - C#.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Development\\AdventOfCode2020\\Day 4 - C#\\Day 4 - C#.csproj",
+        "projectName": "Day 4 - C#",
+        "projectPath": "D:\\Development\\AdventOfCode2020\\Day 4 - C#\\Day 4 - C#.csproj",
+        "packagesPath": "C:\\Users\\Tiqur\\.nuget\\packages\\",
+        "outputPath": "D:\\Development\\AdventOfCode2020\\Day 4 - C#\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Tiqur\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
