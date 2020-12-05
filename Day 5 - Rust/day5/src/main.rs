@@ -3,7 +3,7 @@ const SEATS: i32 = 127;
 const COLUMNS: i32 = 8;
 
 fn main() {
-  let contents = fs::read_to_string("input.txt").unwrap();
+  let contents = fs::read_to_string("../input.txt").unwrap();
   let ids = parse_ids(contents);
   println!("Part 1: {}", part1(ids.clone()));
   println!("Part 2: {}", part2(ids.clone()));
