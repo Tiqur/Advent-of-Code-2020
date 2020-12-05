@@ -49,7 +49,6 @@ func helperFunc(input []string) []*Input {
 
 		// password
 		output.password = strings.Split(inputString, " ")[2]
-
 		formattedInputs = append(formattedInputs, output)
 	}
 	return formattedInputs
